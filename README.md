@@ -26,6 +26,13 @@ Ogni `Libro` contiene un riferimento a un oggetto `Autore`, invece che una sempl
 
 Le operazioni di ricerca e filtro sono implementate con Stream API.
 
+Esempio output:
+```
+[Titolo: Uno, nessuno e centomila; Autore Pirandello; Anno: 1926.]
+[Titolo: 1984; Autore Orwell; Anno: 1949.]
+[Titolo: Uno, nessuno e centomila; Autore Pirandello; Anno: 1926.]
+```
+
 ---
 
 ## Note
