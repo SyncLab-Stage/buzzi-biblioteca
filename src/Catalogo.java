@@ -3,4 +3,29 @@ import java.util.List;
 
 public class Catalogo {
     private List<Libro> libri = new ArrayList<>();
+
+    public void aggiungiLibro(Libro libro) {
+        libri.add(libro);
+    }
+
+    public List<Libro> cercaPerTitolo(String titolo) {
+        List<Libro> perTitolo = libri.stream()
+                .filter(n -> n.getTitolo().equals(titolo))
+                .toList();
+        return perTitolo;
+    }
+
+    public List<Libro> cercaPerAutore(String cognome) {
+        List<Libro> perAutore = libri.stream()
+                .filter(n -> n.getAutore().getCognome().equals(cognome))
+                .toList();
+        return perAutore;
+    }
+
+    public List<Libro> filtraPerAnno(int anno) {
+        List<Libro> perAnno = libri.stream()
+                .filter(n -> n.getAnno() == anno)
+                .toList();
+        return perAnno;
+    }
 }
