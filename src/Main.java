@@ -13,5 +13,9 @@ public class Main {
         catalogo.aggiungiLibro(libro1);
         catalogo.aggiungiLibro(libro2);
         catalogo.aggiungiLibro(libro3);
+
+        System.out.println(catalogo.cercaPerAutore("Pirandello"));
+        System.out.println(catalogo.cercaPerTitolo("1984"));
+        System.out.println(catalogo.filtraPerAnno(1926));
     }
 }
