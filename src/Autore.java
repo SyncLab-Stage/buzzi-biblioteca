@@ -8,4 +8,8 @@ public class Autore {
         this.cognome = cognome;
         this.nazionalita = nazionalita;
     }
+
+    public String getNome() { return nome; }
+    public String getCognome() { return cognome; }
+    public String getNazionalita() { return nazionalita; }
 }
