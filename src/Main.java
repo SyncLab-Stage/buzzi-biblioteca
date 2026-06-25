@@ -8,5 +8,10 @@ public class Main {
         Libro libro2 = new Libro("Uno, nessuno e centomila", autore2, 1926);
         Libro libro3 = new Libro("Dalla parte di Swann", autore3, 1913);
 
+        Catalogo catalogo = new Catalogo();
+
+        catalogo.aggiungiLibro(libro1);
+        catalogo.aggiungiLibro(libro2);
+        catalogo.aggiungiLibro(libro3);
     }
 }
