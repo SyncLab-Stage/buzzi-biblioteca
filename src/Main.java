@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,18 +42,33 @@ public class Main {
                 case 1 -> {
                     System.out.print("Inserire cognome autore: ");
                     String input = scanner.nextLine();
-                    System.out.println(catalogo.cercaPerAutore(input));
+                    List<Libro> risultati = catalogo.cercaPerAutore(input);
+                    if (risultati.isEmpty()) {
+                        System.out.println("Nessun risultato trovato.");
+                    } else {
+                        System.out.println(risultati);
+                    }
                 }
                 case 2 -> {
                     System.out.print("Inserire titolo: ");
                     String input = scanner.nextLine();
-                    System.out.println(catalogo.cercaPerTitolo(input));
+                    List<Libro> risultati = catalogo.cercaPerTitolo(input);
+                    if (risultati.isEmpty()) {
+                        System.out.println("Nessun risultato trovato.");
+                    } else {
+                        System.out.println(risultati);
+                    }
                 }
                 case 3 -> {
                     System.out.println("Inserire anno di pubblicazione: ");
                     int input = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.println(catalogo.filtraPerAnno(input));
+                    List<Libro> risultati = catalogo.filtraPerAnno(input);
+                    if (risultati.isEmpty()) {
+                        System.out.println("Nessun risultato trovato.");
+                    } else {
+                        System.out.println(risultati);
+                    }
                 }
                 default -> System.out.println("Opzione non valida.");
             }
