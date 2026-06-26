@@ -121,3 +121,36 @@ Nessun risultato trovato.
 - La ricerca per titolo e per autore è case-sensitive
 - Il catalogo ammette duplicati (più copie dello stesso libro)
 - I libri sono hardcoded in `Main.java` — nessuna persistenza
+
+---
+
+---
+
+## v4 — Validazione input e ricerca case-insensitive
+
+### Struttura
+
+```
+src/
+├── Autore.java     Invariato rispetto a v3
+├── Libro.java      Invariato rispetto a v3
+├── Catalogo.java   Ricerca case-insensitive per titolo e autore
+└── Main.java       Validazione input per opzione menu e anno di pubblicazione
+```
+
+### Modifiche rispetto a v3
+
+**`Catalogo.java`**
+
+- Ricerca case-insensitive — `cercaPerTitolo` e `cercaPerAutore` usano `equalsIgnoreCase` al posto di `equals`. "orwell", "Orwell" e "ORWELL" producono ora lo stesso risultato.
+
+**`Main.java`**
+
+- Validazione scelta opzione — l'input del menu non viene più letto con `nextInt()` ma con `nextLine()`, poi convertito con `Integer.parseInt()`. Un input non numerico (es. "abc") stampa "Non valido. Riprova." e ripresenta il menu senza crash.
+- Validazione anno di pubblicazione — stesso approccio: lettura come stringa, conversione con `parseInt`, gestione del `NumberFormatException`. Se l'input non è valido la ricerca viene saltata con `break` e il menu si ripresenta.
+
+### Note
+
+- Il catalogo ammette duplicati (più copie dello stesso libro)
+- I libri sono hardcoded in `Main.java` — nessuna persistenza
+- `Libro.toString()` restituisce una rappresentazione nel formato `Titolo: ...; Autore: ...; Anno: ...`
