@@ -10,12 +10,14 @@ public class Main {
         Libro libro1 = new Libro("1984", autore1, 1949);
         Libro libro2 = new Libro("Uno, nessuno e centomila", autore2, 1926);
         Libro libro3 = new Libro("Dalla parte di Swann", autore3, 1913);
+        Libro libro4 = new Libro("Animal Farm", autore1, 1945);
 
         Catalogo catalogo = new Catalogo();
 
         catalogo.aggiungiLibro(libro1);
         catalogo.aggiungiLibro(libro2);
         catalogo.aggiungiLibro(libro3);
+        catalogo.aggiungiLibro(libro4);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +26,7 @@ public class Main {
         do {
             System.out.println();
             System.out.println("+------------------------------------------------+");
-            System.out.println("|      Selezionare l'opzione da eseguire         |");
+            System.out.println("| Biblioteca — Selezionare l'opzione da eseguire |");
             System.out.println("+------------------------------------------------+");
             System.out.println("|    Cerca per Autore (cognome):          1      |");
             System.out.println("|    Cerca per Titolo:                    2      |");
@@ -46,6 +48,7 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
+                        System.out.println("Libri trovati: " + risultati.size());
                         System.out.println(risultati);
                     }
                 }
@@ -56,6 +59,7 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
+                        System.out.println("Libri trovati: " + risultati.size());
                         System.out.println(risultati);
                     }
                 }
@@ -67,6 +71,7 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
+                        System.out.println("Libri trovati: " + risultati.size());
                         System.out.println(risultati);
                     }
                 }
