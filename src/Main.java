@@ -28,9 +28,21 @@ public class Main {
             opzione = scanner.nextInt();
 
             switch (opzione) {
-                case 1 -> System.out.println("Ricerca per autore.");
-                case 2 -> System.out.println("Ricerca per titolo.");
-                case 3 -> System.out.println("Ricerca per anno.");
+                case 1 -> {
+                    System.out.print("Inserire cognome autore: ");
+                    String input = scanner.nextLine();
+                    System.out.println(catalogo.cercaPerAutore(input));
+                }
+                case 2 -> {
+                    System.out.print("Inserire titolo: ");
+                    String input = scanner.nextLine();
+                    System.out.println(catalogo.cercaPerTitolo(input));
+                }
+                case 3 -> {
+                    System.out.print("Inserire anno di pubblicazione: ");
+                    int input = scanner.nextInt();
+                    System.out.println(catalogo.filtraPerAnno(input));
+                }
                 default -> System.out.println("Opzione non valida.");
             }
         } while (opzione != 0);
