@@ -21,7 +21,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int opzione = 0;
+        int opzione = -1;
 
         do {
             System.out.println();
@@ -36,8 +36,12 @@ public class Main {
             System.out.println("+------------------------------------------------+");
             System.out.printf("Inserire opzione: ");
 
-            opzione = scanner.nextInt();
-            scanner.nextLine();
+            String inputOpzione = scanner.nextLine();
+            try {
+                opzione = Integer.parseInt(inputOpzione);
+            } catch (NumberFormatException e) {
+                System.out.println("Non valido. Riprova.");
+            }
 
             switch (opzione) {
                 case 0 -> {
