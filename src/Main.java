@@ -40,7 +40,9 @@ public class Main {
             scanner.nextLine();
 
             switch (opzione) {
-                case 0 -> System.out.println("A presto!");
+                case 0 -> {
+                    System.out.println("A presto!");
+                }
                 case 1 -> {
                     System.out.print("Inserire cognome autore: ");
                     String input = scanner.nextLine();
@@ -64,10 +66,20 @@ public class Main {
                     }
                 }
                 case 3 -> {
-                    System.out.println("Inserire anno di pubblicazione: ");
-                    int input = scanner.nextInt();
-                    scanner.nextLine();
-                    List<Libro> risultati = catalogo.filtraPerAnno(input);
+                    System.out.print("Inserire anno di pubblicazione: ");
+                    String input = scanner.nextLine();
+                    boolean inputValido = false;
+                    int inputAnno = 0;
+                    try {
+                        inputAnno = Integer.parseInt(input);
+                        inputValido = true;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Non valido. Riprova.");
+                    }
+                    if (!inputValido) {
+                        break;
+                    }
+                    List<Libro> risultati = catalogo.filtraPerAnno(inputAnno);
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
@@ -75,6 +87,7 @@ public class Main {
                         System.out.println(risultati);
                     }
                 }
+
                 default -> System.out.println("Opzione non valida.");
             }
         } while (opzione != 0);
