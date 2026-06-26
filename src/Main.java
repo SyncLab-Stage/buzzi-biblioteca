@@ -18,7 +18,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int opzione = 0; // valore di default, inizializzazione prima di assegnazione
+        int opzione = 0;
 
         do {
             System.out.println();
@@ -37,7 +37,7 @@ public class Main {
             scanner.nextLine();
 
             switch (opzione) {
-                case 0 -> {}
+                case 0 -> System.out.println("A presto!");
                 case 1 -> {
                     System.out.print("Inserire cognome autore: ");
                     String input = scanner.nextLine();
