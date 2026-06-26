@@ -16,6 +16,7 @@ src/
 └── Main.java       Dati di test e chiamate dirette ai metodi del catalogo
 ```
 
+
 ### Funzionamento
 
 Ogni `Libro` contiene un riferimento a un oggetto `Autore`, invece che una semplice stringa, in modo da portare con sé tutte le informazioni dell'autore (nome, cognome, nazionalità) senza duplicarle, e di accedervi tramite i getter di `Autore` direttamente dal libro.
@@ -79,3 +80,44 @@ Selezionata un'opzione, il programma richiede l'input corrispondente (cognome, t
 - Il catalogo ammette duplicati (più copie dello stesso libro)
 - I libri sono hardcoded in `Main.java` — nessuna persistenza
 - `Libro.toString()` restituisce una rappresentazione nel formato `Titolo: ...; Autore: ...; Anno: ...`
+
+---
+
+## v3 — Gestione risultati
+
+### Struttura
+
+```
+src/
+├── Autore.java     Invariato rispetto a v2
+├── Libro.java      Invariato rispetto a v2
+├── Catalogo.java   Invariato rispetto a v2
+└── Main.java       Aggiunta gestione esplicita dei risultati e messaggio di uscita
+```
+
+### Modifiche rispetto a v2
+
+Tutte le modifiche sono in `Main.java`:
+
+- Messaggio di uscita — selezionando 0 il programma stampa "A presto!" prima di terminare
+- Gestione risultati vuoti — se una ricerca non produce risultati viene stampato "Nessun risultato trovato." invece di una lista vuota
+- Conteggio risultati — se una ricerca produce risultati viene stampato il numero prima della lista ("Libri trovati: N")
+
+Esempio output con risultati:
+```
+Inserire cognome autore: Orwell
+Libri trovati: 2
+[Titolo: 1984; Autore: Orwell; Anno: 1949., Titolo: Animal Farm; Autore: Orwell; Anno: 1945.]
+```
+
+Esempio output senza risultati:
+```
+Inserire cognome autore: Hemingway
+Nessun risultato trovato.
+```
+
+### Note
+
+- La ricerca per titolo e per autore è case-sensitive
+- Il catalogo ammette duplicati (più copie dello stesso libro)
+- I libri sono hardcoded in `Main.java` — nessuna persistenza
