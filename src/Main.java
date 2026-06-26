@@ -26,6 +26,13 @@ public class Main {
             System.out.printf("%-30s %d%n", "Esci:", 0);
             System.out.print("Inserire opzione: ");
             opzione = scanner.nextInt();
+
+            switch (opzione) {
+                case 1 -> System.out.println("Ricerca per autore.");
+                case 2 -> System.out.println("Ricerca per titolo.");
+                case 3 -> System.out.println("Ricerca per anno.");
+                default -> System.out.println("Opzione non valida.");
+            }
         } while (opzione != 0);
     }
 }
