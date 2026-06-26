@@ -26,6 +26,7 @@ public class Main {
             System.out.printf("%-30s %d%n", "Esci:", 0);
             System.out.print("Inserire opzione: ");
             opzione = scanner.nextInt();
+            scanner.nextLine();
 
             switch (opzione) {
                 case 1 -> {
@@ -41,6 +42,7 @@ public class Main {
                 case 3 -> {
                     System.out.print("Inserire anno di pubblicazione: ");
                     int input = scanner.nextInt();
+                    scanner.nextLine();
                     System.out.println(catalogo.filtraPerAnno(input));
                 }
                 default -> System.out.println("Opzione non valida.");
