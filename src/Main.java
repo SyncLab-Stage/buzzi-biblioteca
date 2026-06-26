@@ -11,14 +11,17 @@ public class Main {
         Libro libro3 = new Libro("Dalla parte di Swann", autore3, 1913);
 
         Catalogo catalogo = new Catalogo();
+
         catalogo.aggiungiLibro(libro1);
         catalogo.aggiungiLibro(libro2);
         catalogo.aggiungiLibro(libro3);
 
         Scanner scanner = new Scanner(System.in);
-        int opzione = 0;
+
+        int opzione = 0; // valore di default, inizializzazione prima di assegnazione
 
         do {
+            System.out.println();
             System.out.println("+------------------------------------------------+");
             System.out.println("|      Selezionare l'opzione da eseguire         |");
             System.out.println("+------------------------------------------------+");
@@ -28,7 +31,8 @@ public class Main {
             System.out.println("|    Esci:                                0      |");
             System.out.println("|                                                |");
             System.out.println("+------------------------------------------------+");
-            System.out.print("Inserire opzione: ");
+            System.out.printf("Inserire opzione: ");
+
             opzione = scanner.nextInt();
             scanner.nextLine();
 
@@ -45,7 +49,7 @@ public class Main {
                     System.out.println(catalogo.cercaPerTitolo(input));
                 }
                 case 3 -> {
-                    System.out.print("Inserire anno di pubblicazione: ");
+                    System.out.println("Inserire anno di pubblicazione: ");
                     int input = scanner.nextInt();
                     scanner.nextLine();
                     System.out.println(catalogo.filtraPerAnno(input));
