@@ -21,7 +21,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        int opzione = -1;
+        int opzione = -1; // valore di default, inizializzazione prima di assegnazione
 
         do {
             System.out.println();
@@ -83,6 +83,12 @@ public class Main {
                     if (!inputValido) {
                         break;
                     }
+
+                    if (inputAnno < 1000) {
+                        System.out.println("Non valido. Riprova.");
+                        break;
+                    }
+
                     List<Libro> risultati = catalogo.filtraPerAnno(inputAnno);
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
