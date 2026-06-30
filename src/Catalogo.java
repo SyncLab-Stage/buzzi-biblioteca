@@ -10,14 +10,14 @@ public class Catalogo {
 
     public List<Libro> cercaPerTitolo(String titolo) {
         List<Libro> perTitolo = libri.stream()
-                .filter(n -> n.getTitolo().equalsIgnoreCase(titolo))
+                .filter(n -> n.getTitolo().toUpperCase().contains(titolo.toUpperCase()))
                 .toList();
         return perTitolo;
     }
 
     public List<Libro> cercaPerAutore(String cognome) {
         List<Libro> perAutore = libri.stream()
-                .filter(n -> n.getAutore().getCognome().equalsIgnoreCase(cognome))
+                .filter(n -> n.getAutore().getCognome().toUpperCase().contains(cognome.toUpperCase()))
                 .toList();
         return perAutore;
     }
