@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Scanner;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class Main {
                 case 0 -> {
                     System.out.println("A presto!");
                 }
+
                 case 1 -> {
                     System.out.print("Inserire cognome autore: ");
                     String input = scanner.nextLine();
@@ -54,10 +56,28 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
-                        System.out.println("Libri trovati: " + risultati.size());
-                        System.out.println(risultati);
+                        System.out.println("Ordina per: ");
+                        System.out.println("1 — Ordina per titolo");
+                        System.out.println("2 — Ordina per anno");
+                        int opzioneCognome = 0;
+                        String ordinaPerScelta = scanner.nextLine();
+                        try {
+                            opzioneCognome = Integer.parseInt(ordinaPerScelta);
+                        } catch (NumberFormatException e) {
+                            System.out.println("Non valido. Riprova.");
+                        }
+                        if (opzioneCognome == 1) {
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparing(Libro::getTitolo));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.println(risultatiOrdinati);
+                        } else if (opzioneCognome == 2) { // avevo paura di fare else perché dobbiamo gestire opzioni non valide
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparingInt(Libro::getAnno));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.println(risultatiOrdinati);
+                        }
                     }
                 }
+
                 case 2 -> {
                     System.out.print("Inserire titolo: ");
                     String input = scanner.nextLine();
@@ -65,10 +85,29 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
-                        System.out.println("Libri trovati: " + risultati.size());
-                        System.out.println(risultati);
+                        System.out.println("Ordina per: ");
+                        System.out.println("1 — Ordina per anno");
+                        System.out.println("2 — Ordina per autore");
+                        int opzioneTitolo = 0;
+                        String ordinaPerScelta = scanner.nextLine();
+                        try {
+                            opzioneTitolo = Integer.parseInt(ordinaPerScelta);
+                        } catch (NumberFormatException e) {
+                            System.out.println("Non valido. Riprova");
+                        }
+
+                        if (opzioneTitolo == 1) {
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparingInt(Libro::getAnno));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.println(risultatiOrdinati);
+                        } else if (opzioneTitolo == 2) {
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparing(libro -> libro.getAutore().getCognome()));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.println(risultatiOrdinati);
+                        }
                     }
                 }
+
                 case 3 -> {
                     System.out.print("Inserire anno di pubblicazione: ");
                     String input = scanner.nextLine();
