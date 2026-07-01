@@ -95,7 +95,6 @@ public class Main {
                         } catch (NumberFormatException e) {
                             System.out.println("Non valido. Riprova");
                         }
-
                         if (opzioneTitolo == 1) {
                             List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparingInt(Libro::getAnno));
                             System.out.println("Libri trovati: " + risultatiOrdinati.size());
@@ -132,8 +131,25 @@ public class Main {
                     if (risultati.isEmpty()) {
                         System.out.println("Nessun risultato trovato.");
                     } else {
-                        System.out.println("Libri trovati: " + risultati.size());
-                        System.out.println(risultati);
+                        System.out.println("Ordina per: ");
+                        System.out.println("1. Ordina per autore (cognome)");
+                        System.out.println("2. Ordina per titolo");
+                        int opzioneAnno = 0;
+                        String ordinaPerScelta = scanner.nextLine();
+                        try {
+                            opzioneAnno = Integer.parseInt(ordinaPerScelta);
+                        } catch (NumberFormatException e) {
+                            System.out.println("Non valido. Riprova.");
+                        }
+                        if (opzioneAnno == 1) {
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparing(libro -> libro.getAutore().getCognome()));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.print(risultatiOrdinati);
+                        } else if (opzioneAnno == 2) {
+                            List<Libro> risultatiOrdinati = catalogo.ordinaLibri(risultati, Comparator.comparing(Libro::getTitolo));
+                            System.out.println("Libri trovati: " + risultatiOrdinati.size());
+                            System.out.print(risultatiOrdinati);
+                        }
                     }
                 }
 
