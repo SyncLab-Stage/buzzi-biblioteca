@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Catalogo {
@@ -27,5 +28,12 @@ public class Catalogo {
                 .filter(n -> n.getAnno() == anno)
                 .toList();
         return perAnno;
+    }
+
+    public List<Libro> ordinaLibri (List<Libro> libri, Comparator<Libro> criterio) {
+        List<Libro> libriOrdinati = libri.stream()
+                .sorted(criterio)
+                .toList();
+        return libriOrdinati;
     }
 }
